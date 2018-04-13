@@ -22,9 +22,6 @@ class PageState extends State<Page>{
       keepScrollOffset: true,
       debugLabel: 'aaa'
     );
-    customScrollViewController.addListener(
-      
-    )
   }
 
   Future<Null>  scrollend() async{
@@ -57,7 +54,6 @@ class PageState extends State<Page>{
                 ),
               );
               Scaffold.of(context).showSnackBar(sbar);
-              
               //customScrollViewController.jumpTo(0.0);
             },
           );
@@ -68,6 +64,11 @@ class PageState extends State<Page>{
         slivers: <Widget>[
           new SliverAppBar(
             pinned: true,
+            snap: true,
+            floating: true,
+            //primary: true,
+            elevation: 5.0,
+            // forceElevated: true,
             expandedHeight: 250.0,
             // backgroundColor: Colors.blue,
             actions: <Widget>[
@@ -81,14 +82,16 @@ class PageState extends State<Page>{
             ],
             flexibleSpace: new FlexibleSpaceBar(
               title: new Text('Comic Girls'),
-              /*background: new Stack(
-                fit: StackFit.expand,
-                children: <Widget>[
-                  new Image.network('http://p1.pstatp.com/large/pgc-image/1523190216006bbb8185de9')
-                ],
-              )*/
+              centerTitle: false,
               background: new Image.network('http://p1.pstatp.com/large/2a3800035cc9a1d799f8', fit: BoxFit.cover),
             ),
+            /*bottom: new PreferredSize(
+              child: new IconButton(
+                onPressed: (){},
+                icon: new Icon(Icons.headset)
+              ),
+              preferredSize: new Size(10.0,250.0)
+            ),*/
           ),
           new SliverGrid(
             gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
