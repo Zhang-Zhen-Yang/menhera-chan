@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'third.dart' show ThirdPage;
 import 'forth.dart' show ForthPage;
 import 'sliver.dart' show Sliver;
+import 'NestedScrollViewPage.dart' show Nested;
+import 'five.dart' show Five;
 
 class Todo{
   String title;
@@ -156,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
               trailing: new Icon(Icons.cancel),
               onTap: () => Navigator.of(context).pop(),    //点击后收起侧边栏
             ),
+            // 
             new ListTile( 
               title: new Text('Third page'),
               trailing: new Icon(Icons.arrow_right),
@@ -171,6 +174,24 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new Sliver()));
+              }
+            ),
+            // nested
+            new ListTile( 
+              title: new Text('nested page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new Nested()));
+              }
+            ),
+            // nested
+            new ListTile( 
+              title: new Text('five page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new Five()));
               }
             ),
             new ClipRect(
