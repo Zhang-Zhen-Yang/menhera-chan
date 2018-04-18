@@ -5,6 +5,8 @@ import 'sliver.dart' show Sliver;
 import 'NestedScrollViewPage.dart' show Nested;
 import 'five.dart' show Five;
 import 'buttons.dart' show ButtonPage;
+import 'containerPage.dart' show ContainerPage;
+import 'animationPage.dart' show AnimationPage;
 
 class Todo{
   String title;
@@ -202,6 +204,24 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ButtonPage()));
+              }
+            ),
+            // containerPage
+            new ListTile( 
+              title: new Text('container page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ContainerPage()));
+              }
+            ),
+            // animationPage
+            new ListTile( 
+              title: new Text('animation page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new AnimationPage()));
               }
             ),
             new ClipRect(

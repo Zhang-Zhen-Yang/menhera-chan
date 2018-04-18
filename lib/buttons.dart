@@ -14,15 +14,18 @@ class Page extends StatefulWidget{
 
 class PageState extends State<Page>{
 
+  String _dropdownSelectedValue = 'banana';
+
   @override
   Widget build(BuildContext context){
-    String _dropdownSelectedValue = 'banana';
+    
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('buttons'),
       ),
       body: new ListView(
         children: <Widget>[
+          // RaisedButton
           new Center(
             child: new RaisedButton(
               child: new Text(
@@ -36,6 +39,7 @@ class PageState extends State<Page>{
               onPressed: (){},
             )
           ),
+          // FlatButton
           new Center(
             child: new FlatButton(
               child: new Text(
@@ -47,6 +51,7 @@ class PageState extends State<Page>{
               onPressed: (){}, 
             ),
           ),
+          // CupertinoButton
           new Center(
             child: new CupertinoButton(
               child: new Text('cupertino'),
@@ -55,6 +60,7 @@ class PageState extends State<Page>{
               pressedOpacity: 0.5,
             )
           ),
+          // DropdownButton
           new Center(
             child: new DropdownButton(
               hint: new Text('选择你喜欢的水果'),
@@ -83,6 +89,7 @@ class PageState extends State<Page>{
               splashColor: Colors.red,
             )
           ),
+
           new Center(
             
               /*child: new Container(
@@ -124,6 +131,7 @@ class PageState extends State<Page>{
               splashColor: Colors.teal,*/
 
             ),
+            // RawMaterialButton
             new Center(
               child: new RawMaterialButton(
                 onPressed: (){},
@@ -180,6 +188,4 @@ void main() => runApp(new MyApp());
             child: new Container( 
               padding: new EdgeInsets.all(12.0), 
             child: new Text('Flat Button'),       ),     );   } }
-
-
 */
