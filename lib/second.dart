@@ -7,6 +7,8 @@ import 'five.dart' show Five;
 import 'buttons.dart' show ButtonPage;
 import 'containerPage.dart' show ContainerPage;
 import 'animationPage.dart' show AnimationPage;
+import 'constraintPage.dart' show ConstraintPage;
+import 'gesturePage.dart' show GesturePage;
 
 class Todo{
   String title;
@@ -222,6 +224,24 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new AnimationPage()));
+              }
+            ),
+            // ConstraintPage
+            new ListTile( 
+              title: new Text('Constraint Page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ConstraintPage()));
+              }
+            ),
+            // GesturePage
+            new ListTile( 
+              title: new Text('Gesture Page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new GesturePage()));
               }
             ),
             new ClipRect(
