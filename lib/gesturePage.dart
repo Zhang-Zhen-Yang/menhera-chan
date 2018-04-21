@@ -15,6 +15,10 @@ class GestureState extends State<GestureWidget>{
   double startX = 0.0;
   double currentX = 0.0;
   double translateDistance = 0.0;
+
+  double startY = 0.0;
+  double currentY = 0.0;
+  double translateDistanceY = 0.0;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -71,12 +75,15 @@ class GestureState extends State<GestureWidget>{
                     print(e.globalPosition.dx);
                     setState((){
                       startX = e.globalPosition.dx;
-                      currentX = e.globalPosition.dy;
+                      currentX = e.globalPosition.dx;
+                      startY = e.globalPosition.dy;
+                      currentY = e.globalPosition.dy;
                     });
                   },
                   onHorizontalDragUpdate: (DragUpdateDetails e){
                     setState((){
                       currentX = e.globalPosition.dx;
+                      currentY = e.globalPosition.dy;
                     });
                   },
                   onHorizontalDragEnd: (DragEndDetails e){
@@ -84,13 +91,16 @@ class GestureState extends State<GestureWidget>{
                       translateDistance = translateDistance + currentX - startX;
                       currentX = 0.0;
                       startX = 0.0;
+                      translateDistanceY = translateDistanceY + currentY - startY;
+                      currentY = 0.0;
+                      startY = 0.0;
                     });
                   },
                 ),
                 left: translateDistance + currentX - startX,
                 width: 200.0,
                 height: 200.0,
-                top: 0.0,
+                top: translateDistanceY + currentY - startY,
               ),
             ],
           ),

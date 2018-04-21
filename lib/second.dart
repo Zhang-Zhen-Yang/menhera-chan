@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel/carousel.dart';
+import 'package:image_carousel/image_carousel.dart';
+import 'dart:async';
 import 'third.dart' show ThirdPage;
 import 'forth.dart' show ForthPage;
 import 'sliver.dart' show Sliver;
@@ -9,6 +13,7 @@ import 'containerPage.dart' show ContainerPage;
 import 'animationPage.dart' show AnimationPage;
 import 'constraintPage.dart' show ConstraintPage;
 import 'gesturePage.dart' show GesturePage;
+import 'netWorkPage.dart' show NetWorkPage;
 
 class Todo{
   String title;
@@ -18,6 +23,7 @@ class Todo{
 
 class SecondPage extends StatelessWidget {
   // This widget is the root of your application.
+  String tag = 'SecondPage';
   @override
   Widget build(BuildContext context) {
     /*return new MaterialApp(
@@ -35,17 +41,37 @@ class SecondPage extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
+  String tag = 'StatefulWidget';
+  int count = 0;
   final String title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
   int _counter = 0;
   String results = '';
+  String tag = '_MyHomePageState';
   final TextEditingController controller = new TextEditingController();
+  TabController imgTabController;
+
+  @override
+  initState(){
+    super.initState();
+    imgTabController = new TabController(
+      vsync: this,
+      length: 4
+    )..addListener((){
+      print(imgTabController.index);
+    });
+    print(widget.tag);
+    new Timer.periodic(new Duration(seconds: 1), (Timer timer){
+      setState((){
+        widget.count++; 
+      });
+    });
+  }
 
   void _incrementCounter(BuildContext context) {
     setState(() {
@@ -244,6 +270,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new GesturePage()));
               }
             ),
+            // NetWorkPage
+            new ListTile( 
+              title: new Text('NetWork page'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new NetWorkPage()));
+              }
+            ),
             new ClipRect(
               child: new GestureDetector(
                 child: new Text('cupertino', style: new TextStyle(fontSize: 30.0)),
@@ -263,6 +298,58 @@ class _MyHomePageState extends State<MyHomePage> {
         child: new ListView(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            /*new Slider(
+              value: 2.0,
+              label: 'apple',
+              onChanged: (e){
+
+              },
+            ),*/
+            /* new CarouselSlider(
+              viewportFraction: 1.0,
+              items: [1,2,3,4,5].map((i) {
+                return new Builder(
+                  builder: (BuildContext context) {
+                    return new Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: new EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: new BoxDecoration(
+                        color: Colors.amber
+                      ),
+                      child: new Text('text $i', style: new TextStyle(fontSize: 16.0),)
+                    );
+                  },
+                );
+              }).toList(),
+              height: 400.0
+            ),*/
+            /*new SizedBox(
+              height: 240.0,
+              child: new Carousel(
+                children: [
+                  new NetworkImage('https://p1.ssl.qhmsg.com/dmfd/177_99_80/ss/40_130/t0188968f68891aa78e.jpg'),
+                  new NetworkImage('https://p1.ssl.qhmsg.com/dmfd/177_99_80/ss/40_130/t01730d78d390e5e3de.jpg')
+                ].map((netImage) => new Image(image: netImage)).toList(),
+               
+              ),
+            ),*/
+            new Center(
+              child: new ImageCarousel(
+                <ImageProvider>[
+                  new NetworkImage('http://p4.so.qhmsg.com/bdr/200_200_/t01f11ddc3b90c6aaf9.png'),
+                  new NetworkImage('http://pic3.178.com/594/5944654/month_1407/110dfaae1ac91217f5dc4d7e312b92c8.jpg'),
+                  new NetworkImage('http://ww1.sinaimg.cn/mw690/be5be7f9jw1ecgj14r7uvj215o0wcnfi.jpg'),
+                  new NetworkImage('http://img5.duitang.com/uploads/item/201407/28/20140728101936_ABajk.thumb.700_0.jpeg'),
+                ],
+                interval: new Duration(seconds: 1),
+                height: 350.0,
+                tabController: imgTabController,
+                allowZoom: true,
+              ),
+            ),
+            new Text(
+              '${widget.count}'
+            ),
             new Text(
               'You have pushed the button this many times rrr:',
             ),
