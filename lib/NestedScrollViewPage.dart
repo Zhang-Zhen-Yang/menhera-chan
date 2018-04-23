@@ -62,6 +62,14 @@ class PageState extends State<Page> with SingleTickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      bottomNavigationBar: new BottomAppBar(
+        color: Colors.red,
+        child: new Text('bottom appbar'),
+      ),
+      persistentFooterButtons: <Widget>[
+        new Text('one'),
+        new Text('tow')
+      ],
       // floatingActionButton
       floatingActionButton: new Builder(
         builder: (BuildContext context){
@@ -78,6 +86,42 @@ class PageState extends State<Page> with SingleTickerProviderStateMixin{
                 ),
               );
               Scaffold.of(context).showSnackBar(sbar);
+
+              /*BottomSheet bs = new BottomSheet(
+                onClosing: (){},
+                builder: (BuildContext context){
+                  return new Image.network('http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg');
+                }
+              );*/
+              /* imagesshowBottomSheet(
+                context: context,
+                builder: (BuildContext context){
+                  return new Image.network('http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg');
+                }
+              );*/
+              // var result = await showTimePicker(context: context,initialTime: new TimeOfDay.now());
+              /*var result = await showDatePicker(context: context, initialDate: new DateTime.now(),firstDate: new DateTime(2017),lastDate: new DateTime(2019));
+              print(result);*/
+              /*showAboutDialog(
+                context: context,
+                children:<Widget>[
+                  new Image.network('http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg'),
+                ]
+              );*/
+              /*var result = await showDialog(
+                context: context,
+                child:new AlertDialog(
+                  title: new Text('hellow'),
+                  content: new Image.network('http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg'),
+                  actions: <Widget>[
+                    new FlatButton(child: new Text('ok'),onPressed: (){ Navigator.pop(context); }),
+                    new FlatButton(child: new Text('no ok'),onPressed: (){})
+                  ],
+                ),
+                barrierDismissible: true
+              );*/
+              
+              
               //customScrollViewController.jumpTo(0.0);
             },
           );

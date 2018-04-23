@@ -14,6 +14,7 @@ import 'animationPage.dart' show AnimationPage;
 import 'constraintPage.dart' show ConstraintPage;
 import 'gesturePage.dart' show GesturePage;
 import 'netWorkPage.dart' show NetWorkPage;
+import 'draggablePage.dart' show DraggablePage;
 
 class Todo{
   String title;
@@ -63,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       vsync: this,
       length: 4
     )..addListener((){
-      print(imgTabController.index);
+      // print(imgTabController.index);
     });
     print(widget.tag);
     new Timer.periodic(new Duration(seconds: 1), (Timer timer){
@@ -277,6 +278,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new NetWorkPage()));
+              }
+            ),
+            // DraggablePage
+            new ListTile( 
+              title: new Text('DraggablePage'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new DraggablePage()));
               }
             ),
             new ClipRect(

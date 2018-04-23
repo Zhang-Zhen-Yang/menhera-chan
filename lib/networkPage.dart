@@ -104,7 +104,8 @@ class NetWorkState extends State<NetWorkWidget>{
           ),
           new Column(
             children: renderList(),
-          )
+          ),
+          
         ],
       ),
     );
