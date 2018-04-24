@@ -15,6 +15,7 @@ import 'constraintPage.dart' show ConstraintPage;
 import 'gesturePage.dart' show GesturePage;
 import 'netWorkPage.dart' show NetWorkPage;
 import 'draggablePage.dart' show DraggablePage;
+import 'CustomPaint.dart' show CustomPaintPage;
 
 class Todo{
   String title;
@@ -287,6 +288,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new DraggablePage()));
+              }
+            ),
+            // CustomPaintPage
+            new ListTile( 
+              title: new Text('CustomPaintPage'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new CustomPaintPage()));
               }
             ),
             new ClipRect(
