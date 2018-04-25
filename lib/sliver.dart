@@ -128,6 +128,7 @@ class PageState extends State<Page>{
                 ),
             ),*/
 
+            // GridView
             new SliverGrid(
               gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200.0,

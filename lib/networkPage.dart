@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'dart:async' show Future;
 import 'package:flutter/services.dart'; //show rootBundle;
 
@@ -26,7 +26,7 @@ class NetWorkState extends State<NetWorkWidget>{
     print(new String.fromCharCodes(input));
   }
   _getResource() async{
-    var url = 'http://192.168.1.132:4000/users';
+    var url = 'http://192.168.1.132:5000/users';
     /*loadAsset().then((value){
       JsonDecoder decoder = new JsonDecoder();
       List json = decoder.convert(value);
