@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert' hide Codec;
+import 'package:flutter/services.dart';
 
 class CustomPaintPage extends StatelessWidget{
   @override
@@ -50,6 +51,16 @@ class CustomPaintState extends State<CustomPaintWidget>{
           // canvas.drawImage(info.image, size.center(Offset.zero), p);
         });
       });
+    });
+
+    loadNetWorkImage().then((res){
+      print('res:$res');
+      res.getNextFrame().then((info){
+        this.setState((){
+          this.networkImageInfo = info.image;
+        });
+      });
+      
     });
 
     // 网络图片
@@ -137,7 +148,7 @@ class CustomPaintState extends State<CustomPaintWidget>{
           ),
           new CustomPaint(
             size: new Size(200.0, 300.0),
-            painter: new Sky(radius, imageInfo),
+            painter: new Sky(radius, imageInfo, networkImageInfo),
           )
         ],
       ),
@@ -163,6 +174,14 @@ class CustomPaintState extends State<CustomPaintWidget>{
     print(encoder.convert(jsons));
   }
 
+  loadNetWorkImage() async{
+    print('loadNetWorkImage------------------------------------------------------');
+    NetworkAssetBundle nb = new NetworkAssetBundle(new Uri());
+    var result = await nb.load('http://img2.178.com/acg1/201312/181193085837/181196147567.jpg');
+    print('result:$result');
+    return await instantiateImageCodec(result.buffer.asUint8List());
+  }
+
 
 }
 
@@ -171,7 +190,8 @@ class CustomPaintState extends State<CustomPaintWidget>{
 class Sky extends CustomPainter{
   double radius;
   var imageInfo;
-  Sky(this.radius, this.imageInfo);
+  var networkImageInfo;
+  Sky(this.radius, this.imageInfo, this.networkImageInfo);
 
 
   @override
@@ -189,6 +209,10 @@ class Sky extends CustomPainter{
       p
     );
 
+    if(networkImageInfo != null){
+      print('dddddddddddddddddddddddnetworkImageInfo');
+      canvas.drawImage(networkImageInfo, new Offset(10.0, 10.0), p);
+    }
     if(imageInfo != null){
       print('ddddddddddddddddddddddddddddddddddddddddd');
       canvas.drawImage(imageInfo, size.center(Offset.zero), p);
@@ -199,7 +223,7 @@ class Sky extends CustomPainter{
   @override
   bool shouldRepaint(Sky old){
     //return false;
-    return radius != old.radius || imageInfo != old.imageInfo;
+    return radius != old.radius || imageInfo != old.imageInfo || networkImageInfo != old.networkImageInfo;
   }
 
   
