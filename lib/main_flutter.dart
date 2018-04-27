@@ -29,6 +29,14 @@ int counterReducer(int state, dynamic action) {
 }
 */
 
+List<String> images = [
+  'http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg',
+  'http://wx2.sinaimg.cn/mw690/d6acdda5ly1firbi2dx9ej20m80m8789.jpg',
+  'http://wx3.sinaimg.cn/mw690/d6acdda5ly1firbi6bwzvj20m80v4wny.jpg',
+  'http://wx2.sinaimg.cn/mw690/d6acdda5ly1firbi8oxypj20m80fp42f.jpg',
+  'http://wx1.sinaimg.cn/mw690/d6acdda5ly1firbifszxdj20m80m8adv.jpg',
+  'http://wx1.sinaimg.cn/mw690/d6acdda5ly1firbii15z9j20m80rsdju.jpg'
+];
 
 // enum Actions { Increment }
 class FlutterReduxApp extends StatelessWidget {
@@ -61,7 +69,8 @@ class FlutterReduxApp extends StatelessWidget {
             converter: (store) {
               // Return a `VoidCallback`, which is a fancy name for a function
               // with no parameters. It only dispatches an Increment action.
-              return () => store.dispatch( new AddFruitAction(new Fruit('apple')) );
+              // return () => store.dispatch( new AddFruitAction(new Fruit('apple')) );
+              return () => store.dispatch(Actions.Increment);
             },
             builder: (context, callback) {
               return new FloatingActionButton(
@@ -79,7 +88,16 @@ class FlutterReduxApp extends StatelessWidget {
             child: new Column(
               children: <Widget>[
                 new Text('redux demo'),
-               
+                new StoreConnector<AppState, int>(
+                  converter:(store){
+                    return store.state.count;
+                  },
+                  builder:(context, count){
+                    return new Image.network(
+                      images[count % images.length]
+                    );
+                  }
+                ),
                 /*new StoreConnector<int, String>(
                   onInit: (store){print('store.state:${store.state}');},
                   converter: (store) => store.state.toString(),
@@ -106,7 +124,6 @@ class FlutterReduxApp extends StatelessWidget {
         )
       )
     );
-    
     
     
 
