@@ -13,29 +13,29 @@ import 'models/app_state.dart';
 
 // The reducer, which takes the previous count and increments it in response
 // to an Increment action.
-int counterReducer(int state, dynamic action) {
+/*int counterReducer(int state, dynamic action) {
   if (action == Actions.Increment) {
     print('state:$state');
     return state + 1;
   }
 
   return state;
-}
+}*/
 
 
 //import 'main2.dart' show MyApp;
 void main() { 
-  // runApp(new MyApp());
+  runApp(new MyApp());
 
 
   // Create your store as a final variable in a base Widget. This works better
   // with Hot Reload than creating it directly in the `build` function.
   // final store = new Store<int>(counterReducer, initialState: 0);
-  final store = new Store<AppState>(appReducer, initialState: new AppState.loading());
+  /*final store = new Store<AppState>(appReducer, initialState: new AppState.loading());
   
   runApp(new FlutterReduxApp(
     title: 'Flutter Redux Demo',
     store: store,
-  ));
+  ));*/
 
 }

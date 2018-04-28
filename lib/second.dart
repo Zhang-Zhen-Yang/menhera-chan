@@ -17,6 +17,7 @@ import 'netWorkPage.dart' show NetWorkPage;
 import 'draggablePage.dart' show DraggablePage;
 import 'CustomPaint.dart' show CustomPaintPage;
 import 'flowpage.dart' show FlowPage;
+import 'pageviewpage.dart' show PageViewPage;
 
 class Todo{
   String title;
@@ -307,6 +308,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.push(context, new MaterialPageRoute(builder: (context)=>new FlowPage()));
+              }
+            ),
+            // PageViewPage
+            new ListTile( 
+              title: new Text('PageViewPage'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new PageViewPage()));
               }
             ),
             new ClipRect(

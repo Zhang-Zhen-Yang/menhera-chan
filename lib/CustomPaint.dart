@@ -182,10 +182,7 @@ class CustomPaintState extends State<CustomPaintWidget>{
     return await instantiateImageCodec(result.buffer.asUint8List());
   }
 
-
 }
-
-
 
 class Sky extends CustomPainter{
   double radius;

@@ -44,6 +44,52 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  initState(){
+
+    super.initState();
+    print('--------------------------------------------------------');
+    int figureA = -93;
+    // figureA是否为负数
+    print(figureA.isNegative);
+    // figureA是否是有限的
+    print(figureA.isFinite);
+    // figureA是否正无穷大或负无穷大
+    print(figureA.isInfinite);
+
+    print(figureA.abs());
+    print(figureA.sign);
+    print('--------------------------------------------------------');
+    print(new Text('ddddd').runtimeType);
+
+    String str = "86";
+    print(str.padLeft(4, '0'));
+    print(str.padRight(4, '0'));
+
+    RegExp exp = new RegExp(r"(\w+)");
+    // 返回正则表达式匹配项的可迭代对象
+    print(exp.allMatches("abc def ghi"));
+    // 搜索并返回第一个匹配项，没有则返回null
+    print(exp.firstMatch(""));
+    // 正则表达式是否找到匹配项
+    print(exp.hasMatch("as"));
+    // 从第几个字符开始匹配正则表达式
+    print(exp.matchAsPrefix("ab cd", 3));
+    // 返回正则表达式的第一个匹配字符串
+    print(exp.stringMatch("abc de"));
+    // 返回正则表达式的字符串表示
+    print(exp.toString());
+
+    print('手机----------------------------------------');
+    RegExp mobile = new RegExp(r"(0|86|17951)?(13[0-9]|15[0-35-9]|17[0678]|18[0-9]|14[57])[0-9]{8}");
+    Iterable<Match> mobiles = mobile.allMatches("13812345678 12345678901 17012345678");
+    for (Match m in mobiles) {
+        String match = m.group(0);
+        print(match);
+    }
+  
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
