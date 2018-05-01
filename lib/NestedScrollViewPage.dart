@@ -13,6 +13,7 @@ class Page extends StatefulWidget {
 }
 
 class PageState extends State<Page> with SingleTickerProviderStateMixin{
+  
   var _tabs = ['apple', 'banana', 'lemon','orange'];
   var titleColors = [Colors.teal, Colors.white];
   bool centerTitle = false;

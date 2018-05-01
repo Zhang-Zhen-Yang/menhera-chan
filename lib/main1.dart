@@ -48,7 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
   initState(){
 
     super.initState();
-    print('--------------------------------------------------------');
+
+
+
+    /*print('--------------------------------------------------------');
     int figureA = -93;
     // figureA是否为负数
     print(figureA.isNegative);
@@ -86,7 +89,44 @@ class _MyHomePageState extends State<MyHomePage> {
     for (Match m in mobiles) {
         String match = m.group(0);
         print(match);
-    }
+    }*/
+
+    // List
+    /*List growableList = new List.from([1, 2, 3, 3, 3, 4]);
+    growableList.replaceRange(1,3,['apple', 'orange']);
+    print(growableList.sublist(1));
+    print(growableList);
+
+    List grow2 = new List.generate(10, (int index){
+      return 'apple$index';
+    });
+    grow2
+    ..setAll(3, ['orange','lemon','phone'])
+    ..shuffle();
+
+    print(grow2);*/
+
+    // Map
+    Map<String, String> map1 = {'a':'apple','b': 'banana','o': 'orange'};
+    print(map1.runtimeType);
+    print(map1.keys);
+    print(map1.values);
+    print(map1.isEmpty);
+    print(map1.length);
+
+    map1.forEach((key, value){
+      print('key: $key;value: $value');
+    });
+
+    print(map1.containsKey('a'));
+    print(map1.containsValue('orange'));
+    map1.putIfAbsent('l', (){
+      return 'lemon';
+    });
+
+    map1['l']='linux';
+    print(map1);
+
   
   }
 

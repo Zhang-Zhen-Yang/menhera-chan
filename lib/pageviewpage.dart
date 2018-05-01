@@ -77,6 +77,18 @@ class PageViewState extends State<PageViewWidget> with SingleTickerProviderState
               new Text('width: ${MediaQuery.of(context).size.width.toString()}'),
               new Text('height: ${MediaQuery.of(context).size.height.toString()}'),
               new Text('height: ${MediaQuery.of(context).devicePixelRatio.toString()}'),
+              new Ink(
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    image: new NetworkImage('http://wx4.sinaimg.cn/mw690/d6acdda5ly1firbi0351aj20m80vdn1z.jpg'), 
+                  )
+                ),
+                child: new InkWell(
+                  child:new Text('kkkkkkkkk'),
+                  onTap:(){},
+                ),
+                height: 300.0
+              ),
               new RichText(
                 text: new TextSpan(
                   text: 'dd',
