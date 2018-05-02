@@ -113,6 +113,9 @@ class PageViewState extends State<PageViewWidget> with SingleTickerProviderState
               new Container(
                 child: new Image.network('http://wx2.sinaimg.cn/mw690/d6acdda5ly1firbi2dx9ej20m80m8789.jpg'),
                 width:MediaQuery.of(context).size.width / 2,
+              ),
+              new SafeArea(
+                child: new Image.network('http://wx2.sinaimg.cn/mw690/d6acdda5ly1firbi2dx9ej20m80m8789.jpg')
               )
             ],
           ),

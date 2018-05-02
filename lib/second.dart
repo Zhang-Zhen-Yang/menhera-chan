@@ -18,6 +18,7 @@ import 'draggablePage.dart' show DraggablePage;
 import 'CustomPaint.dart' show CustomPaintPage;
 import 'flowpage.dart' show FlowPage;
 import 'pageviewpage.dart' show PageViewPage;
+import 'physicsPage.dart' show PhysicPage;
 
 class Todo{
   String title;
@@ -315,8 +316,25 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               title: new Text('PageViewPage'),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                Navigator.of(context).pop();
-                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new PageViewPage()));
+                /*Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new PageViewPage()));*/
+                Navigator.of(context).pushAndRemoveUntil(
+                  new MaterialPageRoute(builder: (context)=>new PageViewPage()),
+                  (Route route){return true;}
+                );
+              }
+            ),
+            // PageViewPage
+            new ListTile( 
+              title: new Text('PhysicPage'),
+              trailing: new Icon(Icons.arrow_right),
+              onTap: () {
+                /*Navigator.of(context).pop();
+                Navigator.push(context, new MaterialPageRoute(builder: (context)=>new PageViewPage()));*/
+                Navigator.of(context).pushAndRemoveUntil(
+                  new MaterialPageRoute(builder: (context)=>new PhysicPage()),
+                  (Route route){return true;}
+                );
               }
             ),
             new ClipRect(
