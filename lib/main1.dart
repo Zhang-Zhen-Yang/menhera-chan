@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'second.dart' show SecondPage;
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'localizations.dart';
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      localizationsDelegates: [
+        // ... app-specific localization delegate[s] here
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        new ReduxLocalizationsDelegate(),
+      ],
+      supportedLocales: [
+        const Locale('zh','CH'),
+        const Locale('en', 'US'), // English
+        const Locale('he', 'IL'), // Hebrew
+        // ... other locales the app supports
+      ],
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: new ThemeData(
@@ -25,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
+  
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -48,8 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   initState(){
 
     super.initState();
-
-
+    //print(ReduxLocalizations.of(context));
 
     /*print('--------------------------------------------------------');
     int figureA = -93;
@@ -149,6 +162,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(ReduxLocalizations.of(context).todos);
+    
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -180,6 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            
             new Text(
               'You have pushed the button this many times:',
             ),
